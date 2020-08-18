@@ -2,11 +2,14 @@ html,body{
     margin: 0px;
     padding: 0px;
 }
+
 /* ?? */
 /* universal selector */
+
 *{
     box-sizing: border-box;
 }
+
 .menu-container{
     height: 20px;
     border: 1px solid red;
@@ -15,6 +18,7 @@ html,body{
     
     width: 124px;
 }
+
 .menu-option-container{
     height: 60px;
     border: 1px solid green;
@@ -27,6 +31,7 @@ html,body{
 .menu-options{
   display: none;  
 }
+
 .menu-options.selected{
    
     display: flex;
@@ -35,7 +40,6 @@ html,body{
     height: 100%;
 
 }
-
 
 input[type="button"].isOn{
     background-color: lightslategrey;
@@ -47,24 +51,28 @@ input[type="button"].isOn{
     border: 1px solid royalblue;
 }
 
+
 .sheets-container{
     height: 20px;
     border: 1px solid grey;
 }
+
 .row{
     display: flex;
 }
+
 .cell{
     /* min-width: 74px; */
     min-height: 26px;
     border: 1px solid;
     text-align: center;
 }
+
 .content-container{
     height: calc(100vh - 128px);
     background-color: lightgreen;
     overflow: auto;
-position: relative;
+    position: relative;
 
 }
 
@@ -75,6 +83,7 @@ position: relative;
     z-index:3;
     position: absolute;
 }
+
 .top-row{
     display: flex;
     position: absolute;
@@ -84,24 +93,33 @@ position: relative;
     z-index:2;
     background-color: limegreen;
 }
+
+
 .top-row>.cell{
 min-width: 74px;
 }
+
+
 .left-col{
 position: absolute;
 z-index:2;
 background-color: limegreen;
 top:25px;
 }
+
+
 .left-col>.cell{
     width: 25px
 }
+
+
 .grid{
     position: absolute;
     left: 24px;
     z-index:1;
     top:25px;
 }
+
 .row>.cell{
     /* min-width: 74px; */
     width: 74px;
