@@ -1,4 +1,4 @@
-// 
+
 const $ = require("jquery");
 const fs = require("fs");
 // document 
@@ -158,6 +158,8 @@ $(document).ready(function () {
             }
         }
     })
+
+    
     // **************Formula stuff starts here******************
     // val=> val
     // formula=> val
@@ -176,6 +178,7 @@ $(document).ready(function () {
         updateCell(rowId, colId, cellObject.value);
         // console.log(db);
     })
+    
     // val=> formula convert
     //formula => new formula 
     $("#formula-input").on("blur", function () {
@@ -198,6 +201,7 @@ $(document).ready(function () {
         updateCell(rowId, colId, nVal);
         //
     })
+    
     //     upstream => go to your upstream=> get there values
     // (   A1 +  A1 - A11 )= [ (,A11,+,A11,+,A1,)]=> [(,10,+,A11,+,10,)]=> ( 10 + A11 + 10 )
     // ( 10 + 20 )
@@ -270,31 +274,23 @@ $(document).ready(function () {
             }
         }
     }
+    
     // delete formula
     function rmusnds(cellObject, cellElem) {
-        // 3.
         cellObject.formula = "";
         let { rowId, colId } = getrc(cellElem);
         for (let i = 0; i < cellObject.upstream.length; i++) {
             let uso = cellObject.upstream[i];
             let fuso = db[uso.rowId][uso.colId];
-            // find index splice yourself
-            // 02
-            // 00,01,02
             let fArr = fuso.downstream.filter(function (dCell) {
                 return !(dCell.colId == colId && dCell.rowId == rowId);
             })
             fuso.downstream = fArr;
-            // let fArr = []
-            // for (let j = 0; j < fuso.downstream.length; j++) {
-            //     if (dCell.colId != colId && dCell.rowId != rowId) {
-            //         fArr.push(fuso.downstream[i]);
-            //     }
-            // }
         }
         cellObject.upstream = [];
 
     }
+    
     // [4,0]=>"40"
     function getParentRowCol(cellName, charAt0) {
         let sArr = cellName.split("");
@@ -305,6 +301,7 @@ $(document).ready(function () {
         return { r, c };
     }
 
+    
     // get row and col from ui
     function getrc(elem) {
         let colId = Number($(elem).attr("c-id"));
@@ -313,6 +310,7 @@ $(document).ready(function () {
             colId, rowId
         }
     }
+    
     // Get cell from db
     function getcell(cellElem) {
         let { colId, rowId } = getrc(cellElem);
@@ -324,26 +322,6 @@ $(document).ready(function () {
     function init() {
         $("#File").trigger("click");
         $("#New").trigger("click");
-        // db = [];
-        // let AllRows = $("#grid").find(".row");
-        // for (let i = 0; i < AllRows.length; i++) {
-        //     let row = [];
-        //     let AllCols = $(AllRows[i]).find(".cell");
-        //     for (let j = 0; j < AllCols.length; j++) {
-        //         //    DB
-        //         let cell = {
-        //             value: "",
-        //             formula: "",
-        //             downstream: [],
-        //             upstream: []
-
-        //         }
-        //         $(AllCols[j]).html('');
-        //         row.push(cell);
-        //     }
-        //     db.push(row);
-        // }
-        // console.log(db);
     }
     init();
 })
